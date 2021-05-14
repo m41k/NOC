@@ -18,6 +18,8 @@ sudo -u postgres psql -c "create role zabbix with login password '123456';"
 sudo -u postgres createdb -O zabbix zabbix
 zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | sudo -u zabbix psql zabbix
 sed -i 's/# DBPassword=/DBPassword=123456/g' /etc/zabbix/zabbix_server.conf
+#redirect index
+echo '<meta http-equiv="refresh" content="0; URL='./zabbix'"/>' > /var/www/index.html
 #Reiniciando serviços
 /etc/init.d/zabbix-agent restart
 /etc/init.d/zabbix-server restart
